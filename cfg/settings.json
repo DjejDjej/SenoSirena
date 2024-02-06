@@ -1,0 +1,10 @@
+{
+"chrome_path":"/usr/bin/thorium-browser",
+"login_wait_time": 520,
+"tickets_refresh_time":60,
+"instances_path":"cfg/instances/",
+"instances_file_names":"instance1",
+"log_level": 3,
+"log_folder":"logs/"
+
+}   
