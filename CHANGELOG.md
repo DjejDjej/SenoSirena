@@ -13,3 +13,5 @@
 - process.pid added to log folder
 ## [Alpha 0.9.12]
 - Simple UI is now functional
+## [Alpha 0.9.13]
+- Log cleaner implemented
