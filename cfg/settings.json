@@ -5,6 +5,9 @@
 "instances_path":"cfg/instances/",
 "instances_file_names":"instance1",
 "log_level": 3,
-"log_folder":"logs/"
+"log_folder":"logs/",
+"logAutoDeletion":true,
+"logsLineDeletion":10
+
 
 }   

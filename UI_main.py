@@ -7,71 +7,11 @@ from datetime import datetime,timedelta
 import platform
 import os
 from PIL import Image, ImageTk
-from UI_Instance import UI_Instance
 from tkinter import ttk
-process = None
-processStarted = False
+from UI_utility import config,clearLogs
+from UI_Elements import *
+
 lastDate = None
-root = tk.Tk()
-instances = []
-
-class ScrollableLabelFrame(tk.Frame):
-    def __init__(self, master, *args, **kwargs):
-        super().__init__(master, *args, **kwargs)
-        self.canvas = tk.Canvas(self, borderwidth=0)
-        self.frame = tk.Frame(self.canvas)
-        self.vsb = tk.Scrollbar(self, orient="vertical", command=self.canvas.yview)
-        self.canvas.configure(yscrollcommand=self.vsb.set)
-
-        self.vsb.pack(side="right")
-        self.canvas.pack(side="left", fill="both", expand=True)
-        self.canvas.create_window((4, 4), window=self.frame, anchor="nw", tags="self.frame")
-
-        self.frame.bind("<Configure>", self.on_frame_configure)
-        self.canvas.bind("<Configure>", self.on_canvas_configure)
-
-    def on_frame_configure(self, event):
-        self.canvas.configure(scrollregion=self.canvas.bbox("all"))
-        self.update_scrollbar_visibility()
-
-    def on_canvas_configure(self, event):
-        canvas_width = event.width
-        self.canvas.itemconfig("self.frame", width=canvas_width)
-        self.update_scrollbar_visibility()
-
-    def update_scrollbar_visibility(self):
-        canvas_height = self.canvas.winfo_height()
-        frame_height = self.frame.winfo_reqheight()
-
-        if frame_height > canvas_height:
-            self.vsb.pack(side="right")
-        else:
-            self.vsb.pack_forget()
-
-def add_element_to_scrollable_frame(scrollable_frame,instance):
-    label_frame = tk.Frame(scrollable_frame.frame, padx=10, pady=10)
-    label_frame.pack(fill="both", expand=True)
-
-    label = tk.Label(label_frame, text=text)
-    label.pack(side="left")
-
-    image = Image.open(image_path)
-    photo = ImageTk.PhotoImage(image)
-    image_label = tk.Label(label_frame, image=photo)
-    image_label.image = photo
-    image_label.pack(side="right")
-
-
-
-def update_scrollbar_visibility(self):
-        canvas_height = self.canvas.winfo_height()
-        frame_height = self.frame.winfo_reqheight()
-
-        if frame_height > canvas_height:
-            self.vsb.pack(side="right", fill="y")
-        else:
-            self.vsb.pack_forget()
-
 
 
 
@@ -101,34 +41,7 @@ def read_file(file_path):
         print(f"{e}")
 
 
-def create_subprocess_on_click():
-    global process
-    global processStarted
-    global instances
-    if(processStarted == False):
-        binary_path = "./SenoSirena"
-        process = subprocess.Popen([binary_path])
-        print("STARTED")
-        processStarted = True
-        instances = loadInstances(scrollable_frame)
 
-
-def terminate_subprocess():
-    global process
-    global processStarted
-    try:
-        
-        if process and process.poll() is None:
-            process.terminate()
-            print("KILLED")
-            processStarted = False
-            process = None
-            kill_process(int(' '.join(read_file("logs/process.pid")).strip()))
-
-
-    except Exception as e:
-        print(f"{e}")
-  
     
 
 def loadInstances(scrollable_frame):
@@ -137,7 +50,8 @@ def loadInstances(scrollable_frame):
     instances = []
     for item in instancesNames:
         instances.append(UI_Instance(item,scrollable_frame))
-        
+        clearLogs(f"logs/{item}_status.log")
+
 
     return instances
 
@@ -154,12 +68,10 @@ def handleConnection(instance):
         instance.changeStatus("good")
 
     else:
-       instance.changeStatus("bad")
+       instance.changeStatus("bad") 
 
    
-def on_closing():
- terminate_subprocess()   
- root.destroy()
+
 
 
 # Create the main window
@@ -198,9 +110,7 @@ btn_terminateAlerting.pack(side="right")
 scrollable_frame = ScrollableLabelFrame(root, relief="sunken", borderwidth=0)
 scrollable_frame.pack(fill="both", expand=True)
 
-
-
-
+loadInstances(scrollable_frame)
 
 root.protocol("WM_DELETE_WINDOW", on_closing)
 
