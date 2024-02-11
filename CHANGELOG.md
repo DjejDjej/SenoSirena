@@ -14,4 +14,6 @@
 ## [Alpha 0.9.12]
 - Simple UI is now functional
 ## [Alpha 0.9.13]
-- Log cleaner implementedc
+- Log cleaner implemented
+## [Alpha 0.9.14]
+-Profiles beta added
