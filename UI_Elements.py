@@ -4,7 +4,6 @@ from PIL import Image, ImageTk
 
 process = None
 processStarted = False
-lastDate = None
 root = tk.Tk()
 instances = []
 
@@ -106,7 +105,7 @@ def on_closing():
  terminate_subprocess()   
  root.destroy()
 
- def create_subprocess_on_click():
+def create_subprocess_on_click():
     global process
     global processStarted
     global instances

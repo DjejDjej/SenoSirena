@@ -4,7 +4,7 @@ import time
 from ticketProcess import XMLtoJson,getTicketNumberArray,find_different_elements,findTicket,checkNewTicket
 from utility import config, loadcfg ,loadjson,printInLog
 from instances import Instance
-from utility import config,handle_terminate_signal,TerminateHandler,print_current_pid
+from utility import config,handle_terminate_signal,TerminateHandler,print_current_pid,getCorrectProfile
 
 #This is the main file, it looks horrible
 
@@ -52,8 +52,8 @@ def main():
                 #This looks horrible but it compares array with tickets from last cycle and new array.If new tickets are detected, for loop will create notifications
                 if(checkNewTicket(item.ticketNumberArray,getTicketNumberArray(item.ticketjson))):
                         for ticket in getTicketNumberArray(item.ticketjson):
-                                item.sendNotification(item.profilesArray[0],
-                                findTicket(item.ticketjson,"number",ticket))
+                                item.sendNotification(item.profilesArray[getCorrectProfile(item.profilesArray,findTicket(item.ticketjson,"number",ticket))],
+                                findTicket(item.ticketjson,"number",ticket)) ##THIS IS DISCUSTING
                                                                   
                 else:
                         #Logging stuff.

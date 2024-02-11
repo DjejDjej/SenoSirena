@@ -5,6 +5,7 @@ import signal
 import sys
 import os
 import platform
+import re
 
 
 def handle_terminate_signal(signum, frame):
@@ -84,4 +85,63 @@ def printToFile(file_path, content):
 #This has to be here. 
 printInLog("CFG loaded","info","GLOBAL")
 
+
+def decodeConditions(strcondition):
+
+    return re.findall(r'\[([^]]+)\]', strcondition)
+
+
+def getConditionBool(strcondition,ticket):
+    
+        
+        try:
+            
+        
+            condArray = strcondition.split(",")
+            print(str(ticket[condArray[0]]) in condArray[2])
+            print(condArray[2] in str(ticket[condArray[0]]))
+            if condArray[1] == "is" and str(ticket[condArray[0]]) == condArray[2]:
+                    return True
+            if condArray[1] == "contains" and condArray[2] in str(ticket[condArray[0]]):
+                    return True
+            if condArray[1] == "startswith" and str(ticket[condArray[0]]).startswith(condArray[2]):
+                    return True
+            if condArray[1] == "endswith" and str((ticket[condArray[0]])).endswith(condArray[2]):
+                    return True
+            if condArray[1] == "notcontains" and  str((ticket[condArray[0]])) not in condArray[2]:
+                    return True
+            if condArray[1] == ">" and int(ticket[condArray[0]]) > int(condArray[2]):
+                    return True
+            if condArray[1] == "<" and int(ticket[condArray[0]]) < int(condArray[2]):
+                    return True
+
+        except Exception as e:
+            printInLog("Error syntax profile  - "+ strcondition,"error,","GLOBAL")
+        return False
+        
+
+
+def getProfileBool(conditions,ticket):
+    
+    decoded = decodeConditions(conditions)
+
+    for item in decoded:
+        
+        conditions = conditions.replace(item,str(getConditionBool(item,ticket))).replace("[","").replace("]","")
+    
+    
+    return eval(conditions)   
+
+
+def getCorrectProfile(profileArray,ticket):
+    ticket = ticket[0]
+
+    if(len(profileArray) > 1 ):
+
+        for i in range(1,len(profileArray)):
+            if(getProfileBool(profileArray[i].conditions,ticket) == True):
+                return i
+    else: return 0  
+    return 0
+        
 

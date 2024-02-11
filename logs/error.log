@@ -1,0 +1,121 @@
+ERROR:root:2024-02-11 05:31:21: [ERROR]: GLOBAL  name 'short_description' is not defined
+Traceback (most recent call last):
+  File "/home/grr/SenoSirena/main.py", line 89, in <module>
+    main()
+  File "/home/grr/SenoSirena/main.py", line 55, in main
+    item.sendNotification(item.profilesArray[getCorrectProfile(item.profilesArray,findTicket(item.ticketjson,"number",ticket))],
+                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/grr/SenoSirena/utility.py", line 136, in getCorrectProfile
+    if(getProfileBool(profileArray[i].conditions,ticket) == True):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/grr/SenoSirena/utility.py", line 129, in getProfileBool
+    return eval(conditions)
+        ^^^^^^^^^^^^^^^^
+  File "<string>", line 1, in <module>
+NameError: name 'short_description' is not defined
+ERROR:root:2024-02-11 05:32:58: [ERROR]: GLOBAL  name 'getCondition' is not defined
+Traceback (most recent call last):
+  File "/home/grr/SenoSirena/main.py", line 89, in <module>
+    main()
+  File "/home/grr/SenoSirena/main.py", line 55, in main
+    item.sendNotification(item.profilesArray[getCorrectProfile(item.profilesArray,findTicket(item.ticketjson,"number",ticket))],
+                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/grr/SenoSirena/utility.py", line 136, in getCorrectProfile
+    if(getProfileBool(profileArray[i].conditions,ticket) == True):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/grr/SenoSirena/utility.py", line 127, in getProfileBool
+    conditions= conditions.replace(item,str(getCondition(item,ticket))).replace("[","").replace("]","")
+                                            ^^^^^^^^^^^^
+NameError: name 'getCondition' is not defined. Did you mean: 'getConditionBool'?
+ERROR:root:2024-02-11 05:35:31: [ERROR]: GLOBAL  list indices must be integers or slices, not str
+Traceback (most recent call last):
+  File "/home/grr/SenoSirena/main.py", line 89, in <module>
+    main()
+  File "/home/grr/SenoSirena/main.py", line 55, in main
+    item.sendNotification(item.profilesArray[getCorrectProfile(item.profilesArray,findTicket(item.ticketjson,"number",ticket))],
+                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/grr/SenoSirena/utility.py", line 135, in getCorrectProfile
+    if(getProfileBool(profileArray[i].conditions,ticket) == True):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/grr/SenoSirena/utility.py", line 126, in getProfileBool
+    conditions= conditions.replace(item,str(getConditionBool(item,ticket))).replace("[","").replace("]","")
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/grr/SenoSirena/utility.py", line 101, in getConditionBool
+    if condArray[1] == "contains" and str(ticket[condArray[0]]) in condArray[2]:
+                                          ~~~~~~^^^^^^^^^^^^^^
+TypeError: list indices must be integers or slices, not str
+ERROR:root:2024-02-11 06:00:09: [ERROR]: GLOBAL  list indices must be integers or slices, not str
+Traceback (most recent call last):
+  File "/home/grr/SenoSirena/main.py", line 89, in <module>
+    main()
+  File "/home/grr/SenoSirena/main.py", line 55, in main
+    item.sendNotification(item.profilesArray[getCorrectProfile(item.profilesArray,findTicket(item.ticketjson,"number",ticket))],
+                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/grr/SenoSirena/utility.py", line 136, in getCorrectProfile
+    if(getProfileBool(profileArray[i].conditions,ticket) == True):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/grr/SenoSirena/utility.py", line 127, in getProfileBool
+    conditions = conditions.replace(item,str(getConditionBool(item,ticket))).replace("[","").replace("]","")
+                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/grr/SenoSirena/utility.py", line 102, in getConditionBool
+    if condArray[1] == "contains" and str(ticket[condArray[0]]) in condArray[2]:
+                                          ~~~~~~^^^^^^^^^^^^^^
+TypeError: list indices must be integers or slices, not str
+ERROR:root:2024-02-11 06:06:23: [ERROR]: GLOBAL  name 'printInlog' is not defined
+Traceback (most recent call last):
+  File "/home/grr/SenoSirena/main.py", line 89, in <module>
+    main()
+  File "/home/grr/SenoSirena/main.py", line 61, in main
+    printInlog(item.ticketNumberArray,"verbose+",item.instance_name)
+    ^^^^^^^^^^
+NameError: name 'printInlog' is not defined. Did you mean: 'printInLog'?
+ERROR:root:2024-02-11 06:08:12: [ERROR]: GLOBAL  name 'printInlog' is not defined
+Traceback (most recent call last):
+  File "/home/grr/SenoSirena/main.py", line 89, in <module>
+    main()
+  File "/home/grr/SenoSirena/main.py", line 61, in main
+    printInlog(item.ticketNumberArray,"verbose+",item.instance_name)
+    ^^^^^^^^^^
+NameError: name 'printInlog' is not defined. Did you mean: 'printInLog'?
+ERROR:root:2024-02-11 06:16:46: [ERROR]: GLOBAL  name 'printInlog' is not defined
+Traceback (most recent call last):
+  File "/home/grr/SenoSirena/main.py", line 89, in <module>
+    main()
+  File "/home/grr/SenoSirena/main.py", line 61, in main
+    printInlog(item.ticketNumberArray,"verbose+",item.instance_name)
+    ^^^^^^^^^^
+NameError: name 'printInlog' is not defined. Did you mean: 'printInLog'?
+ERROR:root:2024-02-11 06:17:34: [ERROR]: GLOBAL  invalid syntax (<string>, line 1)
+Traceback (most recent call last):
+  File "/home/grr/SenoSirena/main.py", line 89, in <module>
+    main()
+  File "/home/grr/SenoSirena/main.py", line 55, in main
+    item.sendNotification(item.profilesArray[getCorrectProfile(item.profilesArray,findTicket(item.ticketjson,"number",ticket))],
+                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/grr/SenoSirena/utility.py", line 143, in getCorrectProfile
+    if(getProfileBool(profileArray[i].conditions,ticket) == True):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/grr/SenoSirena/utility.py", line 134, in getProfileBool
+    return eval(conditions)
+        ^^^^^^^^^^^^^^^^
+  File "<string>", line 1
+    (True and True and True) print(4444444444444444444444444444)
+                             ^^^^^
+SyntaxError: invalid syntax
+ERROR:root:2024-02-11 06:33:02: [ERROR]: GLOBAL  '(' was never closed (<string>, line 1)
+Traceback (most recent call last):
+  File "/home/grr/SenoSirena/main.py", line 89, in <module>
+    main()
+  File "/home/grr/SenoSirena/main.py", line 55, in main
+    item.sendNotification(item.profilesArray[getCorrectProfile(item.profilesArray,findTicket(item.ticketjson,"number",ticket))],
+                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/grr/SenoSirena/utility.py", line 143, in getCorrectProfile
+    if(getProfileBool(profileArray[i].conditions,ticket) == True):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/grr/SenoSirena/utility.py", line 134, in getProfileBool
+    return eval(conditions)
+        ^^^^^^^^^^^^^^^^
+  File "<string>", line 1
+    (True and True
+    ^
+SyntaxError: '(' was never closed

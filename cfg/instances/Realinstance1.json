@@ -17,7 +17,7 @@
     "notification_message":"number: {number} with:"
 },
 "critical":{
-"conditions":"prio = 1",
+"conditions":"[prio is 3]",
 "notification_suppress":0,
 "notification_timeout": 10,
 "sound":"Path/To/Sound",

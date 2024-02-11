@@ -59,13 +59,20 @@ class Instance:
 
     def sendNotification(self,profile,ticket):
         ticket = ticket[0]
-        notification.notify(
+        if(profile.notification_suppress == 0):
+             notification.notify(
             title=profile.notification_title.format(**ticket),
             message=profile.notification_message.format(**ticket),     
             timeout=profile.notification_timeout
             
         )   
-        playsound(profile.sound)
+             playsound(profile.sound)
+        elif(profile.notification_suppress == 1):
+            notification.notify(
+            title=profile.notification_title.format(**ticket),
+            message=profile.notification_message.format(**ticket),     
+            timeout=profile.notification_timeout)
+         #Lazy idk its 6:30 
 
    
 

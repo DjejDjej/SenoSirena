@@ -1,28 +1,28 @@
 {
 "settings":{
     "instance_name":"Nubo",
-    "url":"https://tieto.service-now.com/now/nav/ui/classic/params/target/home.do",
-    "fetch_url": "https://tieto.service-now.com/task_list.do?sysparm_query=assignment_groupDYNAMICd6435e965f510100a9ad2572f2b47744%5Eactive%3Dtrue%5Eassigned_toLIKEPe%C5%A1out&sysparm_view=",
+    "url":"https://tietotest1.service-now.com/now/nav/ui/classic/params/target/home.do",
+    "fetch_url": "https://tietotest1.service-now.com/task_list.do?sysparm_query=assignment_groupDYNAMICd6435e965f510100a9ad2572f2b47744%5Eactive%3Dtrue%5Eassigned_toDYNAMIC90d1921e5f510100a9ad2572f2b477fe&sysparm_view=",
     "url_addon": "&XML&sysparm_field=all",
     "headers_json":"res/headers/headers.json"
 },  
 "profiles":{
 
 "default":{
-    "conditions":"short_description,contains,prod_server1",
+    "conditions":"default",
     "sound":"res/sounds/sound.wav",
     "notification_timeout": 10,
-    "notification_suppress":0,
+    "notification_suppress":2   ,
     "notification_title":"New ticket",
     "notification_message":"BBBBBBBBBBBb: {number}"
 },
 "critical":{
-"conditions":"short_description,contains,prod_server2",
+"conditions":"([short_description,contains,log] and [short_description,startswith,:])",
 "notification_suppress":0,
 "notification_timeout": 10,
 "sound":"res/sounds/sound.wav",
 "notification_title":"Critical!",
-"notification_message":"number: {number} with: "
+"notification_message":"number: {number} with: blah"
 }
 
 
